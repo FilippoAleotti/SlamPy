@@ -31,4 +31,24 @@ the params needed for this 2 algorithms are:
 - a vocabulary file
 - a setting file with the intrisec parameters of the cameras and the other configuration params
 
-in this repo is provided the vocabulary file and the configuration file for ORB_SLAM2/3 for the KITTI_02 camera and the TUM freiburg3 camera in the **slam_metohd/Settings** folder, but you can add your owns using as model the files currently provided.
+in this repository is provided the vocabulary file and the configuration file for ORB_SLAM2/3 for the KITTI_02 camera and the TUM freiburg3 camera in the **slam_metohd/Settings** folder, but you can add your owns using as model the files currently provided.
+
+
+### Docker
+
+on dockerhub can be found a container with all the dipendences and the repository already installed. You can download it by typing 
+```
+docker pull giordanolaminetti/slampy:latest
+```
+in the repository is also provided the Dockerfile to build your own container.
+to run it after the download or build, the command is
+```
+docker run -it -p 8888:8888 giordanolaminetti/slampy tmux
+```
+after the execution it will open a tumx terminal on the container.
+
+if you want to bind the container on a specific folder in your pc, you can type 
+```
+docker run -it --mount type=bind,source="$(pwd)",target=/pyslam -p 8888:8888 giordanolaminetti/slampy tmux
+```
+and change the source directory to the directory you want to bind; the example command is run on root direcotry of the repository
